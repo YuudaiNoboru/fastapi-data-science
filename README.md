@@ -1,1 +1,1 @@
-Exercícios do Livro de FastAPI para Ciências de Dados
+Minhas resoluções dos exercícios do livro Criando Aplicativos de Ciência de Dados com o FastAPI.
