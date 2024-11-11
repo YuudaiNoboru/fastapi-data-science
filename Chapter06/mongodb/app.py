@@ -2,8 +2,8 @@ from bson import ObjectId, errors
 from fastapi import Depends, FastAPI, HTTPException, Query, status
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
-from Chapter6.mongodb.database import get_databese
-from Chapter6.mongodb.models import (
+from Chapter06.mongodb.database import get_databese
+from Chapter06.mongodb.models import (
     CommentCreate,
     Post,
     PostCreate,

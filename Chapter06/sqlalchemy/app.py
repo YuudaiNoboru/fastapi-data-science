@@ -7,9 +7,9 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
-from Chapter6.sqlalchemy import schemas
-from Chapter6.sqlalchemy.database import create_all_tables, get_async_session
-from Chapter6.sqlalchemy.models import Post, Comment
+from Chapter06.sqlalchemy import schemas
+from Chapter06.sqlalchemy.database import create_all_tables, get_async_session
+from Chapter06.sqlalchemy.models import Post, Comment
 
 @contextlib.asynccontextmanager
 async def lifespan(app: FastAPI):
