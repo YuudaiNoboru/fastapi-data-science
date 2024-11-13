@@ -2,9 +2,9 @@ from collections.abc import AsyncGenerator
 
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
-from Chapter07.authentication.models import Base
+from Chapter07.csrf.models import Base
 
-DATABASE_URL = "sqlite+aiosqlite:///Chapter07/authentication/chapter07_authentication.db"
+DATABASE_URL = "sqlite+aiosqlite:///Chapter07/csrf/chapter07_authentication.db"
 engine = create_async_engine(DATABASE_URL)
 async_session_maker = async_sessionmaker(engine, expire_on_commit=False)
 

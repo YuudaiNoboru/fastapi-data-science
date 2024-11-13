@@ -1,8 +1,8 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from Chapter07.authentication.models import AccessToken, User
-from Chapter07.authentication.password import verify_password
+from Chapter07.csrf.models import AccessToken, User
+from Chapter07.csrf.password import verify_password
 
 async def authenticate(email: str, password: str, session: AsyncSession) -> User | None:
     query = select(User).where(User.email == email)
