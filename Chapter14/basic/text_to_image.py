@@ -9,13 +9,13 @@ class TextToImage:
     pipe: StableDiffusionPipeline | None = None
 
     def load_model(self) -> None:
-        # Ativando a CUDA GPU
+        # Enable CUDA GPU
         if torch.cuda.is_available():
             device = "cuda"
-        # Ativando o Apple Silicon (M1) GPU
+        # Enable Apple Silicon (M1) GPU
         elif torch.backends.mps.is_available():
             device = "mps"
-        # Usando a CPU
+        # Fallback to CPU
         else:
             device = "cpu"
 
@@ -29,16 +29,18 @@ class TextToImage:
         *,
         negative_prompt: str | None = None,
         num_steps: int = 50,
-        callback: Callable[[int, int, torch.FloatTensor], None] | None = None,
+        callback_function: Callable[[int, int, torch.FloatTensor], None] | None = None,
+        callback_steps=1,
     ) -> Image.Image:
         if not self.pipe:
-            raise RuntimeError("O pipiline não foi carregado.")
+            raise RuntimeError("Pipeline is not loaded")
         return self.pipe(
             prompt,
             negative_prompt=negative_prompt,
             num_inference_steps=num_steps,
             guidance_scale=9.0,
-            callback=callback,
+            callback=callback_function,
+            callback_steps = callback_steps
         ).images[0]
 
 
@@ -52,6 +54,6 @@ if __name__ == "__main__":
     image = text_to_image.generate(
         "A Renaissance castle in the Loire Valley",
         negative_prompt="low quality, ugly",
-        callback=callback,
+        callback_function=callback,
     )
     image.save("output.png")
